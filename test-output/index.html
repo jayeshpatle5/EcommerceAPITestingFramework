@@ -56,7 +56,7 @@
                 </li>
                 <li>
                   <a href="#" panel-name="testlist-API" class="navigator-link ">
-                    <span class="test-stats">1 test</span>
+                    <span class="test-stats">2 tests</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -93,7 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">2 methods,   2 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -102,6 +102,11 @@
                       <a href="#" panel-name="suite-API" class="show-methods passed suite-API"> (show)</a> <!-- show-methods passed suite-API -->
                     </span>
                     <div class="method-list-content passed suite-API">
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-API" title="testScripts.CreateOrder" class="method navigator-link" hash-for-method="createnewOrder(TC0003, API_DATA)">createnewOrder(TC0003, API_DATA)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-API" title="testScripts.loginAPITest" class="method navigator-link" hash-for-method="loginAPI(TC0001, API_DATA)">loginAPI(TC0001, API_DATA)</a> <!-- method navigator-link -->
@@ -135,6 +140,22 @@
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-API-class-passed -->
+          <div class="suite-API-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">testScripts.CreateOrder</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="createnewOrder(TC0003, API_DATA)">
+                  </a> <!-- createnewOrder(TC0003, API_DATA) -->
+                  <span class="method-name">createnewOrder</span>
+                  <span class="parameters">(TC0003, API_DATA)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-API-class-passed -->
         </div> <!-- panel API -->
         <div panel-name="test-xml-API" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -145,7 +166,7 @@
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite name=&quot;API&quot; guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;2&quot;&gt;
-  &lt;test thread-count=&quot;5&quot; name=&quot;Default XmlTest name 21549d6b-41ef-4fbb-a83d-c028bdcb7015&quot; verbose=&quot;2&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;Default XmlTest name 649b3611-2b16-4804-846d-ff81ca7f1290&quot; verbose=&quot;2&quot;&gt;
     &lt;parameter name=&quot;dataSheet&quot; value=&quot;API_DATA&quot;/&gt;
     &lt;parameter name=&quot;testCaseID&quot; value=&quot;TC0001&quot;/&gt;
     &lt;classes&gt;
@@ -155,7 +176,18 @@
         &lt;/methods&gt;
       &lt;/class&gt; &lt;!-- testScripts.loginAPITest --&gt;
     &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- Default XmlTest name 21549d6b-41ef-4fbb-a83d-c028bdcb7015 --&gt;
+  &lt;/test&gt; &lt;!-- Default XmlTest name 649b3611-2b16-4804-846d-ff81ca7f1290 --&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;Default XmlTest name 6955f344-c76e-4bc1-9ede-c02aa02adb45&quot; verbose=&quot;2&quot;&gt;
+    &lt;parameter name=&quot;dataSheet&quot; value=&quot;API_DATA&quot;/&gt;
+    &lt;parameter name=&quot;testCaseID&quot; value=&quot;TC0003&quot;/&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;testScripts.CreateOrder&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;createnewOrder&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- testScripts.CreateOrder --&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- Default XmlTest name 6955f344-c76e-4bc1-9ede-c02aa02adb45 --&gt;
 &lt;/suite&gt; &lt;!-- API --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -167,7 +199,10 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Default XmlTest name 21549d6b-41ef-4fbb-a83d-c028bdcb7015 (1 class)</span>
+                <span class="test-name">Default XmlTest name 649b3611-2b16-4804-846d-ff81ca7f1290 (1 class)</span>
+              </li>
+              <li>
+                <span class="test-name">Default XmlTest name 6955f344-c76e-4bc1-9ede-c02aa02adb45 (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -193,16 +228,20 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(2);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'loginAPI')
 data.setCell(0, 2, 'testScripts.loginAPITest')
-data.setCell(0, 3, 3534);
+data.setCell(0, 3, 8379);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'createnewOrder')
+data.setCell(1, 2, 'testScripts.CreateOrder')
+data.setCell(1, 3, 325);
 window.suiteTableData['API']= { tableData: data, tableDiv: 'times-div-API'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 3 seconds</span>
+              <span class="suite-total-time">Total running time: 8 seconds</span>
               <div id="times-div-API">
               </div> <!-- times-div-API -->
             </div> <!-- times-div -->
@@ -232,6 +271,13 @@ return data;
               <div class="test-method">
                 <span class="method-name">loginAPI(TC0001, API_DATA)</span>
                 <span class="method-start">0 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">testScripts.CreateOrder</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">createnewOrder(TC0003, API_DATA)</span>
+                <span class="method-start">8469 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

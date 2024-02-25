@@ -1,11 +1,15 @@
 package com.ecommerce.Driver.API.customKeywords;
-import com.ecommerce.Driver.API.actions.*;
-import com.ecommerce.Testdata.excel.ExcelDataReader;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.emptyArray;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasKey;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.notNullValue;
 
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,8 +18,19 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.*;
+import com.ecommerce.Driver.API.actions.HttpOperation;
+import com.ecommerce.Driver.API.actions.ValidatorOperation;
+import com.ecommerce.Testdata.excel.ExcelDataReader;
+import com.ecommerce.commonUtils.ConfigReader;
+import com.fasterxml.jackson.core.exc.StreamWriteException;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 
 
 public abstract class APIDriverKeywords extends ExcelDataReader {
@@ -50,8 +65,17 @@ public abstract class APIDriverKeywords extends ExcelDataReader {
 		if(!(data.get("PathParams").equalsIgnoreCase(null) || data.get("PathParams").equalsIgnoreCase(""))){
 			this.url = this.url+data.get("PathParams");
 		}
+		
 		if(!(data.get("Headers").equalsIgnoreCase(null) || data.get("Headers").equalsIgnoreCase(""))) {
-			setHeader(data.get("Headers").split(":")[0].trim(), data.get("Headers").split(":")[1].trim());
+			String[] arr= data.get("Headers").split(";");
+			for(int i=0;i<arr.length;i++) {
+				String temp=arr[i].split(":")[0].trim();
+				if(temp.equals("Authorization")) {
+					setHeader(temp,ConfigReader.loadProperties("token"));
+				}else {
+			setHeader(temp, arr[i].split(":")[1].trim());
+				}
+			}
 		}
 		if(!(data.get("PayloadPath").equalsIgnoreCase(null) || data.get("PayloadPath").equalsIgnoreCase(""))) {
 			setBody(getStringFromFilePath(System.getProperty("user.dir") + "\\" + data.get("PayloadPath")));
@@ -71,6 +95,7 @@ public abstract class APIDriverKeywords extends ExcelDataReader {
 		}
 		if(!(data.get("PayloadPath").equalsIgnoreCase(null) || data.get("PayloadPath").equalsIgnoreCase(""))) {
 			setBody(getStringFromFilePath(System.getProperty("user.dir") + "\\" + data.get("PayloadPath")));
+			//setBody(getjsonDataFromFilePath(System.getProperty("user.dir") + "\\" + data.get("PayloadPath")));
 		}
 
 		return sendRequest();
@@ -112,7 +137,11 @@ public abstract class APIDriverKeywords extends ExcelDataReader {
 
 	}
 
-
+    public String getjsonDataFromFilePath(String path) throws IOException {
+    	
+    	Path fileName=Path.of(path);
+		return Files.readString(fileName);
+    }
 	public void setHeader(String head, String val) { reqSpec.header(head, val);}
 
 	public void setBody(String body) {
@@ -224,7 +253,12 @@ public abstract class APIDriverKeywords extends ExcelDataReader {
 
 		return this;
 	}
-
+    public void saveResponseinfile(String methodname) throws StreamWriteException, DatabindException, IOException {
+    	ObjectMapper mapper = new ObjectMapper();
+		ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+		writer.writeValue(new File(ConfigReader.loadProperties("JsonResFilepath")+methodname+"Resp.json"),resp.asString());
+    }
+    
 	public String extractString(String path) { return resp.jsonPath().getString(path);}
 	
 	public int extractInt(String path) { return resp.jsonPath().getInt(path);}
