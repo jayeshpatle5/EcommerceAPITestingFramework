@@ -12,15 +12,4 @@
       </class> <!-- testScripts.loginAPITest -->
     </classes>
   </test> <!-- Default XmlTest name 649b3611-2b16-4804-846d-ff81ca7f1290(failed) -->
-  <test thread-count="5" name="Default XmlTest name 6955f344-c76e-4bc1-9ede-c02aa02adb45(failed)" verbose="2">
-    <parameter name="dataSheet" value="API_DATA"/>
-    <parameter name="testCaseID" value="TC0003"/>
-    <classes>
-      <class name="testScripts.CreateOrder">
-        <methods>
-          <include name="createnewOrder" invocation-numbers="0"/>
-        </methods>
-      </class> <!-- testScripts.CreateOrder -->
-    </classes>
-  </test> <!-- Default XmlTest name 6955f344-c76e-4bc1-9ede-c02aa02adb45(failed) -->
 </suite> <!-- Failed suite [API] -->

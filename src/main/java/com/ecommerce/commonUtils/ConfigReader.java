@@ -13,7 +13,7 @@ import java.util.Properties;
 
 public class ConfigReader {
     Logger logger = LoggerHelper.getLogger(ConfigReader.class);
-    static String  path="D:\\eclipse workspace\\ECommerceAPI\\src\\test\\resources\\config\\config.properties";
+    static String  path=System.getProperty("user.dir")+"\\src\\test\\resources\\config\\config.properties";
 
 
     public static String loadProperties(String property) {

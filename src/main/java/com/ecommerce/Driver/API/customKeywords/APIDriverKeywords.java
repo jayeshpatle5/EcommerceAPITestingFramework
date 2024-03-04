@@ -13,20 +13,25 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONObject;
+
 import com.ecommerce.Driver.API.actions.HttpOperation;
 import com.ecommerce.Driver.API.actions.ValidatorOperation;
 import com.ecommerce.Testdata.excel.ExcelDataReader;
 import com.ecommerce.commonUtils.ConfigReader;
+import com.ecommerce.commonUtils.ReadjsonData;
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.google.gson.JsonObject;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -130,7 +135,7 @@ public abstract class APIDriverKeywords extends ExcelDataReader {
 	}
 
 
-	public String getStringFromFilePath(String path) throws IOException {
+	public static String getStringFromFilePath(String path) throws IOException {
 		System.out.println(path);
 		Path fileName = Path.of(path);
 		return Files.readString(fileName);
@@ -141,6 +146,21 @@ public abstract class APIDriverKeywords extends ExcelDataReader {
     	
     	Path fileName=Path.of(path);
 		return Files.readString(fileName);
+    }
+    
+    public Collection<Object> getjsonvalueusingkey(String path, String key) throws IOException {
+    	String source=getStringFromFilePath(System.getProperty("user.dir")+"\\");
+        JSONObject json=new JSONObject(source);
+    	
+		return ReadjsonData.getJsonValue1(json,key);
+    }
+    
+    public boolean isbodyContainsKey(String path, String key) throws IOException {
+    	//String s=System.getProperty("user.dir");
+    	String source=getStringFromFilePath("D:\\eclipse workspace\\ECommerceAPI1\\"+path);
+    	System.out.println(source);
+        JSONObject json=new JSONObject(source);
+        return ReadjsonData.bodyContainsKey(json, key);
     }
 	public void setHeader(String head, String val) { reqSpec.header(head, val);}
 
@@ -256,7 +276,7 @@ public abstract class APIDriverKeywords extends ExcelDataReader {
     public void saveResponseinfile(String methodname) throws StreamWriteException, DatabindException, IOException {
     	ObjectMapper mapper = new ObjectMapper();
 		ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-		writer.writeValue(new File(ConfigReader.loadProperties("JsonResFilepath")+methodname+"Resp.json"),resp.asString());
+		writer.writeValue(new File(System.getProperty("user.dir")+ConfigReader.loadProperties("JsonResFilepath")+methodname+"Resp.json"),resp.asString());
     }
     
 	public String extractString(String path) { return resp.jsonPath().getString(path);}

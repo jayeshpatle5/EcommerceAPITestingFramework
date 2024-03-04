@@ -8,15 +8,41 @@
 <body>
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
-<tr><th colspan="8">API</th></tr>
-<tr><td><a href="#t0">Default XmlTest name 649b3611-2b16-4804-846d-ff81ca7f1290</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">8,486</td><td></td><td></td></tr>
-<tr class="stripe"><td><a href="#t1">Default XmlTest name 6955f344-c76e-4bc1-9ede-c02aa02adb45</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">333</td><td></td><td></td></tr>
-<tr><th>Total</th><th class="num">2</th><th class="num">0</th><th class="num">0</th><th class="num">0</th><th class="num">8,819</th><th colspan="2"></th></tr>
+<tr><th colspan="8">Default suite</th></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">67</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">API</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default XmlTest name 649b3611-2b16-4804-846d-ff81ca7f1290 &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">testScripts.loginAPITest</td><td><a href="#m0">loginAPI</a></td><td rowspan="1">1708853127125</td><td rowspan="1">8379</td></tr></tbody>
-<tbody id="t1"><tr><th colspan="4">Default XmlTest name 6955f344-c76e-4bc1-9ede-c02aa02adb45 &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">testScripts.CreateOrder</td><td><a href="#m1">createnewOrder</a></td><td rowspan="1">1708853135594</td><td rowspan="1">325</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">testScripts.loginAPITest</td><td><a href="#m0">loginAPI</a></td><td rowspan="1">1709387126876</td><td rowspan="1">0</td></tr></tbody>
 </table>
-<h2>Default XmlTest name 649b3611-2b16-4804-846d-ff81ca7f1290</h2><h3 id="m0">testScripts.loginAPITest#loginAPI</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>TC0001</td><td>API_DATA</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h2>Default XmlTest name 6955f344-c76e-4bc1-9ede-c02aa02adb45</h2><h3 id="m1">testScripts.CreateOrder#createnewOrder</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>TC0003</td><td>API_DATA</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Default test</h2><h3 id="m0">testScripts.loginAPITest#loginAPI</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.testng.TestNGException: 
+Parameter &apos;testCaseID&apos; is required by @Test on method loginAPI but has not been marked @Optional or defined
+in C:\Users\SPURGE\AppData\Local\Temp\testng-eclipse--1323730591\testng-customsuite.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:267)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:355)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:660)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:856)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:704)
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:70)
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:49)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:904)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:193)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:808)
+	at org.testng.TestRunner.run(TestRunner.java:603)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:429)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:423)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:383)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:326)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1249)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.runSuites(TestNG.java:1092)
+	at org.testng.TestNG.run(TestNG.java:1060)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>
